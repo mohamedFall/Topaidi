@@ -24,21 +24,9 @@ public class IdeaDaoImplementation implements IdeaDao {
 	public Idea getIdea(Long id) {
 		return em.find(Idea.class, id);
 	}
-
-	/*
-	 * public List<Commentaires> getIdeaComments(Long id) { String sql =
-	 * "select c from Commentaires c join users u on c.user_id join idea i on c.idea_id = :id"
-	 * ; return em.createQuery(sql, Commentaires.class).setParameter("id",
-	 * id).getResultList(); }
-	 */
 	
 	public List<Idea> getListIdeas() {
 		return em.createQuery("SELECT i FROM Idea i", Idea.class).getResultList();
-	}
-
-	public List<Idea> getIdeasRanking() {
-		String sql = "SELECT i FROM Idea i group by i.id order by i.top DESC, SUM(i.likes + i.dislikes) DESC, i.createdAt DESC";
-		return em.createQuery(sql, Idea.class).getResultList();
 	}
 	
 	public void addIdea(Idea idea) {
@@ -68,5 +56,15 @@ public class IdeaDaoImplementation implements IdeaDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+
+	public List<Idea> getIdeasUpToDown() {
+		String sql = "SELECT i FROM Idea i ORDER BY i.numberOfVotes DESC";
+		return em.createQuery(sql, Idea.class).getResultList();
+	}
+
+	public List<Idea> getIdeasDownToUp() {
+		String sql = "SELECT i FROM Idea i ORDER BY i.numberOfVotes ASC";
+		return em.createQuery(sql, Idea.class).getResultList();
 	}
 }

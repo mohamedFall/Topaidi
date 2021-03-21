@@ -32,10 +32,11 @@ public class RankingServlet extends HttpServlet{
 		
 		if(req.getParameterMap().containsKey("action")) {
 			if(req.getParameter("action").equals("upToDown")) {
-				req.setAttribute("listIdeasRanking", ideaService.getIdeasRanking());
+				System.out.println("result of filtering " + ideaService.getIdeasUpToDown());
+				req.setAttribute("listIdeas", ideaService.getIdeasUpToDown());
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ranking.jsp").forward(req, resp);
 			} else if(req.getParameter("action").equals("downToUp")) {
-				req.setAttribute("listIdeasRanking", ideaService.getIdeasRanking());
+				req.setAttribute("listIdeas", ideaService.getIdeasDownToUp());
 				this.getServletContext().getRequestDispatcher("/WEB-INF/pages/ranking.jsp").forward(req, resp);
 			} else if(null == session.getAttribute("isConnected")) {
 		        resp.sendRedirect("signIn?action=signOn");

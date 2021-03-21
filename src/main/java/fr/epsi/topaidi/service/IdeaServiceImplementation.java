@@ -36,14 +36,19 @@ public class IdeaServiceImplementation implements IdeaService {
 		return  ideaDao.getListIdeas();
 		
 	}
-
-	public List<Idea> getIdeasRanking() {
-		IdeaDao ideaDao = new IdeaDaoImplementation(em, utx);
-		return  ideaDao.getIdeasRanking();
-	}
 	
 	public void addIdea(Idea idea) {
 		IdeaDao ideaDao = new IdeaDaoImplementation(em, utx);
 		ideaDao.addIdea(idea);
+	}
+
+	public List<Idea> getIdeasUpToDown() {
+		IdeaDao ideaDao = new IdeaDaoImplementation(em, utx);
+		return  ideaDao.getIdeasUpToDown();
+	}
+
+	public List<Idea> getIdeasDownToUp() {
+		IdeaDao ideaDao = new IdeaDaoImplementation(em, utx);
+		return  ideaDao.getIdeasDownToUp();
 	}
 }

@@ -9,7 +9,9 @@ public interface IdeaService {
 	
 	List<Idea> getListIdeas();
 	
-	List<Idea> getIdeasRanking();
+	List<Idea> getIdeasUpToDown();
+	
+	List<Idea> getIdeasDownToUp();
 	
 	void addIdea(Idea idea);
 

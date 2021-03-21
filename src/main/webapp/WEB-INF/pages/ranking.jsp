@@ -19,6 +19,20 @@
 	
 	<div class="container">
 		<div class="row">
+			<div class="col">
+				<h6 class="blue-text" style="cursor: pointer;" onclick="window.location.href='ranking?action=upToDown'">Up to down</h6>
+			</div>
+			<div class="col">
+				<h6 class="blue-text" style="cursor: pointer;" onclick="window.location.href='ranking?action=downToUp'">Down to up</h6>
+			</div>
+			<div class="col">
+				<h6 class="blue-text" style="cursor: pointer;" onclick="window.location.href='ranking'">Par défaut</h6>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
 			<c:forEach var="idea" items="${listIdeas}">
 				<div class="col s12 l4">
 					<div class="card">
